@@ -1,5 +1,6 @@
 # install the libraries
 library(jsonlite)
+library(tidyverse)
 
 # read in our data files
 # demo_table <- read.csv(file='demo.csv',check.names=F,stringsAsFactors = F)
@@ -15,4 +16,5 @@ filter_table2 <- subset(demo_table2, price > 10000 & drive == "4wd" & "clean" %i
 
 # sample data
 demo_table[sample(1:nrow(demo_table), 3),]
+
 
