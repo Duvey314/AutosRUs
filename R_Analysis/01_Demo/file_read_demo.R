@@ -24,3 +24,9 @@ demo_table <- demo_table %>% mutate(Mileage_per_Year=Total_Miles/(2020-Year),IsA
 # groupby and summarize
 summarize_demo <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage=mean(odometer)) #create summary table
 summarize_demo2 <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage=mean(odometer),Maximum_Price=max(price),Num_Vehicles=n()) #create summary table with multiple columns
+
+# gather
+long_table <- gather(demo_table3,key="Metric",value="Score",buying_price:popularity)
+
+# spread
+wide_table <- long_table %>% spread(key="Metric",value="Score")
