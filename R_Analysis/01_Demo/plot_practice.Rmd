@@ -1,0 +1,27 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(ggplot2)
+```
+
+```{r}
+head(mpg)
+```
+
+```{r}
+# creat ggplot
+plt <- ggplot(mpg,aes(x=class)) #import dataset into ggplot2
+plt + geom_bar() #plot a bar plot
+```
+```{r}
+
+mpg_summary <- mpg %>% group_by(manufacturer) %>% summarize(Vehicle_Count=n()) #create summary table
+
+plt <- ggplot(mpg_summary,aes(x=manufacturer,y=Vehicle_Count)) #import dataset into ggplot2
+
+plt + geom_col() #plot a bar plot
+
+```
+
