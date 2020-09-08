@@ -49,4 +49,9 @@ plt + geom_point() + xlab("Engine Size (L)") + ylab("City Fuel-Efficiency (MPG)"
 plt <- ggplot(mpg,aes(x=displ,y=cty,color=class)) #import dataset into ggplot2
 plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class") #add scatter plot with labels
 ```
+```{r}
+# building a better scatterplot
 
+plt <- ggplot(mpg,aes(x=displ,y=cty,shape=factor(cyl))) #import dataset into ggplot2
+plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", shape="Cylinders") #add scatter plot with labels
+```
