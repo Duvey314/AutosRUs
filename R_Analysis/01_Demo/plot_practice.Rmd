@@ -55,3 +55,13 @@ plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", c
 plt <- ggplot(mpg,aes(x=displ,y=cty,shape=factor(cyl))) #import dataset into ggplot2
 plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", shape="Cylinders") #add scatter plot with labels
 ```
+```{r}
+# basic boxplot
+plt <- ggplot(mpg,aes(y=hwy)) #import dataset into ggplot2
+plt + geom_boxplot() #add boxplot
+```
+```{r}
+# multi boxplot
+plt <- ggplot(mpg,aes(x=manufacturer,y=hwy)) #import dataset into ggplot2
+plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1)) #add boxplot and rotate x-axis labels 45 degrees
+```
