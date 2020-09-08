@@ -65,3 +65,32 @@ plt + geom_boxplot() #add boxplot
 plt <- ggplot(mpg,aes(x=manufacturer,y=hwy)) #import dataset into ggplot2
 plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1)) #add boxplot and rotate x-axis labels 45 degrees
 ```
+```{r}
+# heat map
+mpg_summary <- mpg %>% group_by(class,year) %>% summarize(Mean_Hwy=mean(hwy)) #create summary table
+plt <- ggplot(mpg_summary, aes(x=class,y=factor(year),fill=Mean_Hwy))
+plt + geom_tile() + labs(x="Vehicle Class",y="Vehicle 
+Year",fill="Mean Highway (MPG)") + theme(axis.text.x=element_text(angle=45,hjust=1)) #create heatmap with labels 
+```
+```{r}
+#combined plots with same data
+plt <- ggplot(mpg,aes(x=manufacturer,y=hwy)) #import dataset into ggplot2
+plt + geom_boxplot() + #add boxplot
+theme(axis.text.x=element_text(angle=45,hjust=1)) + #rotate x-axis labels 45 degrees
+geom_point() #overlay scatter plot on top
+
+```
+```{r}
+# basic summary graph
+mpg_summary <- mpg %>% group_by(class) %>% summarize(Mean_Engine=mean(displ)) #create summary table
+plt <- ggplot(mpg_summary,aes(x=class,y=Mean_Engine)) #import dataset into ggplot2
+plt + geom_point(size=4) + labs(x="Vehicle Class",y="Mean Engine Size") #add scatter plot
+
+```
+```{r}
+# added error bars
+mpg_summary <- mpg %>% group_by(class) %>% summarize(Mean_Engine=mean(displ),SD_Engine=sd(displ))
+plt <- ggplot(mpg_summary,aes(x=class,y=Mean_Engine)) #import dataset into ggplot2
+plt + geom_point(size=4) + labs(x="Vehicle Class",y="Mean Engine Size") + #add scatter plot with labels
+geom_errorbar(aes(ymin=Mean_Engine-SD_Engine,ymax=Mean_Engine+SD_Engine))
+```
