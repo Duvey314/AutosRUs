@@ -54,3 +54,16 @@ mtcars_filt$cyl <- factor(mtcars_filt$cyl) #convert numeric column to factor
 aov(hp ~ cyl,data=mtcars_filt) #compare means across multiple levels
 
 summary(aov(hp ~ cyl,data=mtcars_filt)) # wrap aov in summary function to see p value
+
+# linear regression
+head(mtcars)
+
+plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
+plt + geom_point() #create scatter plot
+
+cor(mtcars$hp,mtcars$qsec) #calculate correlation coefficient
+
+# regression matrix
+used_cars <- read.csv('used_car_data.csv',stringsAsFactors = F) #read in dataset
+used_matrix <- as.matrix(used_cars[,c("Selling_Price","Present_Price","Miles_Driven")]) #convert data frame into numeric matrix
+cor(used_matrix)
