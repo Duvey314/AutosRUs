@@ -46,3 +46,11 @@ mpg_1999 <- mpg_data %>% filter(year==1999) #select only data points where the y
 mpg_2008 <- mpg_data %>% filter(year==2008) #select only data points where the year is 2008
 
 t.test(mpg_1999$hwy,mpg_2008$hwy,paired = T) #compare the mean difference between two samples
+
+# ANOVA Test
+mtcars_filt <- mtcars[,c("hp","cyl")] #filter columns from mtcars dataset
+mtcars_filt$cyl <- factor(mtcars_filt$cyl) #convert numeric column to factor
+
+aov(hp ~ cyl,data=mtcars_filt) #compare means across multiple levels
+
+summary(aov(hp ~ cyl,data=mtcars_filt)) # wrap aov in summary function to see p value
