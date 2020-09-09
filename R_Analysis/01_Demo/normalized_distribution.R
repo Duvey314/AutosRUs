@@ -55,7 +55,7 @@ aov(hp ~ cyl,data=mtcars_filt) #compare means across multiple levels
 
 summary(aov(hp ~ cyl,data=mtcars_filt)) # wrap aov in summary function to see p value
 
-# linear regression
+# correlation coefficient
 head(mtcars)
 
 plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
@@ -67,3 +67,14 @@ cor(mtcars$hp,mtcars$qsec) #calculate correlation coefficient
 used_cars <- read.csv('used_car_data.csv',stringsAsFactors = F) #read in dataset
 used_matrix <- as.matrix(used_cars[,c("Selling_Price","Present_Price","Miles_Driven")]) #convert data frame into numeric matrix
 cor(used_matrix)
+
+# linear regression
+lm(qsec ~ hp,mtcars) #create linear model
+
+summary(lm(qsec ~ hp,mtcars)) 
+
+model <- lm(qsec ~ hp,mtcars) #create linear model
+yvals <- model$coefficients['hp']*mtcars$hp + model$coefficients['(Intercept)'] #determine y-axis values from linear model
+
+plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
+plt + geom_point() + geom_line(aes(y=yvals), color = "red") #plot scatter and linear model
