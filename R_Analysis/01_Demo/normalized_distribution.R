@@ -78,3 +78,9 @@ yvals <- model$coefficients['hp']*mtcars$hp + model$coefficients['(Intercept)'] 
 
 plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
 plt + geom_point() + geom_line(aes(y=yvals), color = "red") #plot scatter and linear model
+
+# multiple variable linear regression
+lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars) #generate multiple linear regression model
+
+# summary data
+summary(lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars)) #generate summary statistics
