@@ -39,3 +39,10 @@ slice_sample_table <- slice_sample(population_table, n = 50) # generate 50 sampl
 slice_sample_table2 <- slice_sample(population_table, n = 50) # generate another 50
 
 t.test(log10(slice_sample_table$Miles_Driven), log10(slice_sample_table2$Miles_Driven)) #compare means of two samples
+
+# two sample t test for comparing samples
+mpg_data <- read.csv('mpg_modified.csv') #import dataset
+mpg_1999 <- mpg_data %>% filter(year==1999) #select only data points where the year is 1999
+mpg_2008 <- mpg_data %>% filter(year==2008) #select only data points where the year is 2008
+
+t.test(mpg_1999$hwy,mpg_2008$hwy,paired = T) #compare the mean difference between two samples
