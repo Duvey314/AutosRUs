@@ -18,7 +18,13 @@ sample_table <- population_table %>% sample_n(50) #randomly sample 50 data point
 plt <- ggplot(sample_table,aes(x=log10(Miles_Driven))) #import dataset into ggplot2
 plt + geom_density() #visualize distribution using density plot
 
-# creat sample set with slice_sample
-sample_table <- slice_sample(population_table, n = 50) #randomly sample 50 data points
+# create sample set with slice_sample
+sample_table2 <- slice_sample(population_table, n = 50) #randomly sample 50 data points
 plt <- ggplot(sample_table,aes(x=log10(Miles_Driven))) #import dataset into ggplot2
 plt + geom_density() #visualize distribution using density plot
+
+# t-test for sample_n
+t.test(log10(sample_table$Miles_Driven),mu=mean(log10(population_table$Miles_Driven))) #compare sample versus population means
+
+# t-test for slice_sample
+t.test(log10(sample_table2$Miles_Driven),mu=mean(log10(population_table$Miles_Driven))) #compare sample versus population means
