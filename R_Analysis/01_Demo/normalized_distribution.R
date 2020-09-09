@@ -28,3 +28,14 @@ t.test(log10(sample_table$Miles_Driven),mu=mean(log10(population_table$Miles_Dri
 
 # t-test for slice_sample
 t.test(log10(sample_table2$Miles_Driven),mu=mean(log10(population_table$Miles_Driven))) #compare sample versus population means
+
+# 2 sample t-test
+n_sample_table <- population_table %>% sample_n(50) #generate 50 randomly sampled data points
+n_sample_table2 <- population_table %>% sample_n(50) #generate another 50 randomly sampled data points
+
+t.test(log10(n_sample_table$Miles_Driven),log10(n_sample_table2$Miles_Driven)) #compare means of two samples
+
+slice_sample_table <- slice_sample(population_table, n = 50) # generate 50 samples
+slice_sample_table2 <- slice_sample(population_table, n = 50) # generate another 50
+
+t.test(log10(slice_sample_table$Miles_Driven), log10(slice_sample_table2$Miles_Driven)) #compare means of two samples
