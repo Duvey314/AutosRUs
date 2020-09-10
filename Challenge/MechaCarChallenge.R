@@ -20,4 +20,7 @@ summary(lm(mpg ~ `spoiler angle` + `vehicle length` + AWD + `ground clearance` ,
 summary(lm(mpg ~ `spoiler angle` + `vehicle length` + AWD + `ground clearance` + `vehicle weight`, data=mpg_data))
 
 # summary statistics for suspension data
-summarize_suspension <- suspension %>% group_by(Manufacturing_Lot) %>% summarize(Mean_PSI=mean(PSI),Median_PSI=median(PSI),Variance_PSI=var(PSI),sd(PSI),Num_Vehicles=n())
+summarize_suspension <- suspension %>% group_by(Manufacturing_Lot) %>% summarize(Mean_PSI=mean(PSI),Median_PSI=median(PSI),Variance_PSI=var(PSI),Standard_Deviation=sd(PSI),Num_Vehicles=n())
+
+# perform t-test on suspension summary table
+t.test(suspension$PSI, mu=1500)
