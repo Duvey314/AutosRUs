@@ -16,3 +16,5 @@ summary(lm(mpg ~ AWD + `vehicle weight` + `ground clearance` ,data=mpg_data))
 lm(mpg ~ `spoiler angle` + `vehicle length` + AWD + `ground clearance` ,data=mpg_data)
 summary(lm(mpg ~ `spoiler angle` + `vehicle length` + AWD + `ground clearance` ,data=mpg_data))
 
+# check all of them just to be sure
+summary(lm(mpg ~ `spoiler angle` + `vehicle length` + AWD + `ground clearance` + `vehicle weight`, data=mpg_data))
