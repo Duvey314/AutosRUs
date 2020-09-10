@@ -18,3 +18,6 @@ summary(lm(mpg ~ `spoiler angle` + `vehicle length` + AWD + `ground clearance` ,
 
 # check all of them just to be sure
 summary(lm(mpg ~ `spoiler angle` + `vehicle length` + AWD + `ground clearance` + `vehicle weight`, data=mpg_data))
+
+# summary statistics for suspension data
+summarize_suspension <- suspension %>% group_by(Manufacturing_Lot) %>% summarize(Mean_PSI=mean(PSI),Median_PSI=median(PSI),Variance_PSI=var(PSI),sd(PSI),Num_Vehicles=n())
