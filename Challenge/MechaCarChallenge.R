@@ -24,3 +24,4 @@ summarize_suspension <- suspension %>% group_by(Manufacturing_Lot) %>% summarize
 
 # perform t-test on suspension summary table
 t.test(suspension$PSI, mu=1500)
+
